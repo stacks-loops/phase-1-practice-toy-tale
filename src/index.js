@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 fetch('http://localhost:3000/toys')
 .then(resp => resp.json())
 .then(data => renderToys(data))
+.catch(error => console.log(error))
 
 function renderToys(toysArray) {
   const toysContainer = document.querySelector('#toy-collection')
@@ -18,12 +19,13 @@ function renderToys(toysArray) {
     likes.innerText = toyObj.likes
     image.src = toyObj.image
 
-    eachCard.append(name, image, likes)
-    toysContainer.append(eachCard)
+    eachCard.appendChild(name)
+    eachCard.appendChild(image)
+    eachCard.appendChild(likes)
+
+    toysContainer.appendChild(eachCard)
 
    
   })
-  
-
 }
 })
